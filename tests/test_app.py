@@ -13,7 +13,6 @@ from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography.hazmat.primitives import serialization
 import pytest
 
-# helper to decode base64url-encoded JWT parts safely
 def b64url_decode(s: str) -> bytes:
     rem = len(s) % 4
     if rem:
@@ -45,7 +44,6 @@ def build_public_key_from_jwk(j):
     return pubkey
 
 def test_jwks_only_unexpired(client):
-    # The app's store already has keys, but to be sure we can simply query and assert all exp > now
     jwks = fetch_jwks(client)
     assert "keys" in jwks
     assert len(jwks["keys"]) > 0

@@ -90,7 +90,7 @@ class KeyStore:
                     "kid": k.kid,
                     "n": n_b64,
                     "e": e_b64,
-                    "exp": int(k.expiry.timestamp()),  # custom field for tests / visibility
+                    "exp": int(k.expiry.timestamp()), 
                 })
         return out
 
